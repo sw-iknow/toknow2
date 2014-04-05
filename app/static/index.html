@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,9 +21,9 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
   </head>
 
   <body>
@@ -38,60 +37,74 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">To Know</a>
+          <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+         {% if current_user != "AnonymousUser" %}
+<ul class="nav navbar-nav navbar-right">
+<li><a href="#">{{ current_user }}</a></li>
+<form class="navbar-form navbar-left" role="form" action="" method="post">{% csrf_token %}
+<input type="hidden" name="action" value="logout" />
+<button type="submit" class="btn btn-default" value="logout">Log out</button>
+</form>
+</ul>
+         {% else %}
+<form class="navbar-form navbar-right" role="form" action="" method="post">{% csrf_token %}
+<div class="form-group">
+<input type="text" placeholder="Email" class="form-control" name="username" value="" id="username">
+</div>
+<div class="form-group">
+<input type="password" placeholder="Password" class="form-control" name="password" value="" id="password">
+</div>
+<button type="submit" class="btn btn-success" value="login">Sign in</button>
+<!-- <input type="hidden" name="next" value="/" /> -->
+</form>
+          {% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class ="formcontainer">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>ToKnow</h1>
+        <p>{{ stuff }}</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
     <div class="container">
       <!-- Example row of columns -->
-            <form action="" method="post">
-            <fieldset>
-                <div>
-                    <h1>Registration Form</h1>
-
-                </div>
-                <div>
-                    <input type="text" name="email" placeholder="Email"/>
-                </div>
-
-                <div>
-                    <input type="password" name="password" placeholder="Password"/>
-                </div>
-                <div>
-                    <div class="small">Knowledge I have:</div>
-                    <textarea name="message" placeholder="Enter what you're awesome at here!"></textarea>
-                </div>    
-                <input type="submit" name="submit" value="Send"/>
-            </fieldset>    
-        </form>
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
 
       <hr>
 
       <footer>
-        <p>&copy; ToKnow 2014</p>
+        <p>&copy; Company 2014</p>
       </footer>
     </div> <!-- /container -->
-    </div>
 
 
     <!-- Bootstrap core JavaScript
-    ================================================== -->
+================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
   </body>
 </html>

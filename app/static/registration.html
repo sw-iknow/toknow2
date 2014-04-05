@@ -58,30 +58,30 @@
     
     <div class="container">
       <!-- Example row of columns -->
-         <form role="form" class="form-horizontal" action="" method="post">{% csrf_token %}
+        <form role="form" class="form-horizontal" action="" method="post">{% csrf_token %}
+          <fieldset>
            <div class="control-group">
                   <div>
                     <h1>Registration Form</h1>
                 </div>
              <label class="control-label" for="inputEmail">Email</label>
             <div class="controls">
-           <input type="text" id="inputEmail" placeholder="Email">
+           <input type="text" name="email" placeholder="Email">
           </div>
-    </div>
-    <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
-    <div class="controls">
-    <input type="password" id="inputPassword" placeholder="Password">
-    </div>
-    </div>
-    <div class="control-group">
-    <div class="controls">
-    <label class="checkbox">
-    <input type="checkbox"> Remember me
-    </label>
-    <button type="submit" class="btn">Sign in</button>
-    </div>
-    </div>   
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="inputPassword">Password</label>
+        <div class="controls">
+        <input type="password" id="inputPassword" placeholder="Password">
+        </div>
+        </div>
+        <div class="control-group">
+        <div class="controls">
+
+        <button type="submit" name="submit" value="Send" class="btn">Submit</button>
+        </fieldset> 
+        </div>
+        </div>   
         </form>
 
       <hr>
@@ -96,6 +96,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -31,3 +31,13 @@ def index(request):
     context = RequestContext(request, {'current_user': str(request.user)})
     logger.debug("User: " + str(request.user))
     return HttpResponse(template.render(context))
+
+def registration(request):
+    logger.debug("REGISTRATION")
+    if request.user.is_active:
+        return HttpResponse("Already registered")
+    else:
+        template = loader.get_template('app/registration.html')
+        context = RequestContext(request, {'current_user': str(request.user)})
+        logger.debug("User: " + str(request.user))
+        return HttpResponse(template.render(context))

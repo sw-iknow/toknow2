@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,9 +22,9 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
@@ -40,25 +41,25 @@
           <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div class="navbar-collapse collapse">
-         {% if current_user != "AnonymousUser" %}
-<ul class="nav navbar-nav navbar-right">
-<li><a href="#">{{ current_user }}</a></li>
-<form class="navbar-form navbar-left" role="form" action="" method="post">{% csrf_token %}
-<input type="hidden" name="action" value="logout" />
-<button type="submit" class="btn btn-default" value="logout">Log out</button>
-</form>
-</ul>
-         {% else %}
-<form class="navbar-form navbar-right" role="form" action="" method="post">{% csrf_token %}
-<div class="form-group">
-<input type="text" placeholder="Email" class="form-control" name="username" value="" id="username">
-</div>
-<div class="form-group">
-<input type="password" placeholder="Password" class="form-control" name="password" value="" id="password">
-</div>
-<button type="submit" class="btn btn-success" value="login">Sign in</button>
-<!-- <input type="hidden" name="next" value="/" /> -->
-</form>
+        	{% if current_user != "AnonymousUser" %}
+	        	<ul class="nav navbar-nav navbar-right">
+			        <li><a href="#">{{ current_user }}</a></li>
+			        <form class="navbar-form navbar-left" role="form" action="" method="post">{% csrf_token %}
+			        	<input type="hidden" name="action" value="logout" />
+				        <button type="submit" class="btn btn-default" value="logout">Log out</button>
+				      </form>
+	        	</ul>
+        	{% else %}
+	          <form class="navbar-form navbar-right" role="form" action="" method="post">{% csrf_token %}
+	            <div class="form-group">
+	              <input type="text" placeholder="Email" class="form-control" name="username" value="" id="username">
+	            </div>
+	            <div class="form-group">
+	              <input type="password" placeholder="Password" class="form-control" name="password" value="" id="password">
+	            </div>
+	            <button type="submit" class="btn btn-success" value="login">Sign in</button>
+	            <!-- <input type="hidden" name="next" value="/" /> -->
+	          </form>
           {% endif %}
         </div><!--/.navbar-collapse -->
       </div>
@@ -102,7 +103,7 @@
 
 
     <!-- Bootstrap core JavaScript
-================================================== -->
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>

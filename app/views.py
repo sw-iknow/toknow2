@@ -20,18 +20,22 @@ def index(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     logout = request.POST.get('action', '')
-    
+    current_user = request.user
+
     if logout:
         logger.debug("Logging out!")
         auth.logout(request)
     else:
-        user = auth.authenticate(username=username, password=password)
+        user = auth.authenticate(username=str(username), password=str(password))
+        logger.debug("authed user:" + str(user))
+        logger.debug("Username: " + username + ", Password: " + password)
         if user is not None and user.is_active:
             auth.login(request, user)
+            current_user = user
 
     template = loader.get_template('app/index.html')
-    context = RequestContext(request, {'current_user': str(request.user)})
-    logger.debug("User: " + str(request.user))
+    context = RequestContext(request, {'current_user': str(current_user)})
+    logger.debug("User: " + str(current_user))
     return HttpResponse(template.render(context))
 
 def registration(request):
@@ -42,11 +46,13 @@ def registration(request):
         email = request.POST.get('email', '')
         password = request.POST.get('password', '')
         message = request.POST.get('message', '')
-
+        logger.debug("reg user:" + email)
+        logger.debug("reg pw:" + password)
         if email:
-            u = User.objects.create_user(username=email, email=email, password=password)
+            u = User.objects.create_user(username=str(email), password=str(password))
+            u.set_password(password)
             u.save()
-            user = auth.authenticate(username=email, password=password)
+            user = auth.authenticate(username=str(email), password=str(password))
             ui = UserInfo(message=message)
             ui.save()
             auth.login(request, user)

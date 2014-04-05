@@ -16,3 +16,4 @@ from django.conf.urls.static import static
 urlpatterns += static('/css/', document_root='app/static/css/')
 urlpatterns += static('/images/', document_root='app/static/images/')
 urlpatterns += static('/js/', document_root='app/static/js/')
+urlpatterns += static('/profiles/', document_root='app/static/profiles/')

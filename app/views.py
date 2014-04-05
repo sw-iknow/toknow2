@@ -25,6 +25,7 @@ def index(request):
     if logout:
         logger.debug("Logging out!")
         auth.logout(request)
+        return redirect("/")
     else:
         user = auth.authenticate(username=str(username), password=str(password))
         logger.debug("authed user:" + str(user))

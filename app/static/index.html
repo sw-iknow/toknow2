@@ -65,6 +65,8 @@
       </div>
     </div>
 
+
+    {% if current_user == "AnonymousUser" %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -94,6 +96,85 @@
           and help end 'knowledge poverty'</p>
         </div>
       </div>
+
+      {% else %}
+
+
+
+
+
+   <div class="container">
+      <!-- Example row of columns -->
+      <div class="row" style="margin-top:20px">
+        <div class="col-md-4">
+        <img src="images/ToKnow_logo_350x65.png" />
+          <h4>The world's first knowledge exchange and mentoring platform, allowing users to share knowledge and connect to experts in real time!</h4>
+        </div>
+        <div class="col-md-4">
+    <img src="images/DannyBluestone.jpg" style="float:right" />
+        <p><strong>Danny Bluestone</strong> <a href="">log out</a></p>
+          <p><strong>Statistics so far ...</strong><br>Member since: 4th April 2014<br>Knowledge offers: 3<br>Knowledge requests: 95<br>Knowledge hook-ups: 17</p>
+          <p><a class="btn" href="#">Edit Profile &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+            <form>
+          <p><strong>Knowledge finder</strong></p>
+      <p>Start by typing the knowledge you are offering or requesting in the search box below</p>
+              <input class="span4" type="text" placeholder="search">
+              
+            </form>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- Example row of columns -->
+      <div class="row" style="margin-top:20px">
+        <div class="col-md-4">
+          <h4>Your Knowledge Offers</h4>
+      <div>
+        <img src="images/Sourdough.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Sourdough Bread</strong><br><em>I am the Master!</em><br><strong>Views:</strong> 5; <strong>Requests:</strong> 0; <strong>Hookups:</strong> 0;</p>
+      </div>
+      <div style="clear:both;">
+      <img src="images/Flytying.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Fly Tying</strong><br><em>I can get you started</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
+    </div>
+      <div style="clear:both;">
+      <img src="images/Bagpipes.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>History of Bagpipes</strong><br><em>My PhD subject</em><br>Views: 0; Requests: 0; Hookups: 0;</p>
+    </div>
+    <div style="clear:both;"></div>
+        </div>
+        <div class="col-md-4">
+          <h4>Your Knowledge Requests</h4>
+      <div>
+        <img src="images/StartupLogo.png" style="float:left; margin:0 10px 10px 0;" /> <p><strong>How to win Startup</strong><br><em>If only I knew!</em><br><strong>Views:</strong> 2; <strong>Requests:</strong> 0; <strong>Hookups:</strong> 0;</p>
+      </div>
+      <div style="clear:both;">
+      <img src="images/Meryllynch.png" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Bank rescue</strong><br><em>Is it too late</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
+    </div>
+      <div style="clear:both;">
+      <img src="images/creme-egg.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Cream egg world record</strong><br><em>How can I eat 6 in a minute </em><br>Views: 0; Requests: 0; Hookups: 0;</p>
+    </div>
+    <div style="clear:both;"></div>
+       </div>
+        <div class="col-md-4">
+          <h4>Your Knowledge Hook-ups</h4>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; ToKnow.co 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+
+
+
+
+
+      {% endif %}
 
       <hr>
 

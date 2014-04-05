@@ -52,6 +52,10 @@ ROOT_URLCONF = 'toknow.urls'
 
 WSGI_APPLICATION = 'toknow.wsgi.application'
 
+#Authentication backends
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

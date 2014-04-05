@@ -1,13 +1,14 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.views import login, logout
 from django.contrib import admin
+from app import views
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', include('app.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    (r'^accounts/logout/$', logout),
+    url(r'^registration$', views.registration),
 )
 
 from django.conf.urls.static import static

@@ -53,7 +53,7 @@ def registration(request):
             u.set_password(password)
             u.save()
             user = auth.authenticate(username=str(email), password=str(password))
-            ui = UserInfo(message=message)
+            ui = UserInfo(message=message, authuser_id_id=user.id)
             ui.save()
             auth.login(request, user)
             return redirect("/")

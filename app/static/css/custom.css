@@ -2,8 +2,9 @@ body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
-    #wrapper {
+
+#wrapper {
         width:450px;
         margin:0 auto;
         font-family:Verdana, sans-serif;
-    }
+}

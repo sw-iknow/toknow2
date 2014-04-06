@@ -65,6 +65,7 @@ def profile(request):
     context = RequestContext(request, {
         'current_user': str(current_user),
         "page": "profile",
+        "username": current_user.username,
     })
     logger.debug("User: " + str(current_user))
     return HttpResponse(template.render(context))

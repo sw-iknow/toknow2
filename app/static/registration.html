@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>ToKnow</title>
 
@@ -36,7 +33,6 @@
       <div class="row"><h2>New Registration</h2></div>
       <!-- Example row of columns -->
         <form role="form" action="" method="post">{% csrf_token %}
-          <fieldset>
 
           <div class="form-group">
              <label class="col-md-2" for="inputUserName">User Name:</label>
@@ -52,35 +48,37 @@
              </div>
            </div>
 
-
-
-        <div class="form-group">
-          <label class="col-md-2" for="inputPassword">Password</label>
-            <div class="col-md-10">
+           <div class="form-group">
+             <label class="col-md-2" for="inputPassword">Password</label>
+             <div class="col-md-10">
               <input type="password" name="password" class = "form-control" id="inputPassword" placeholder="Password">
+             </div>
+          </div>
+
+          <div class ="form-group">
+            <label class="col-md-2">Skills here:</label>
+            <div class = "col-md-10">
+             <input type="text" class = "form-control" name="message" placeholder="Skill 1">
             </div>
-        </div>
+          </div>
 
-        <div class ="control-group">
-          
-          <label class="control-label">Enter your skills here</label>
-            <div class = "controls">
-            <textarea name="message" rows="3"></textarea>
-        </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-          <button type="submit" name="submit" value="Send" class="btn">Submit</button>
-        </fieldset>
-        </div>
-        </div>
+          <div class ="form-group">
+            <label class="col-md-2">And another:</label>
+            <div class = "col-md-10">
+             <input type="text" class = "form-control" name="message2" placeholder="Skill 2">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+             <button type="submit" name="submit" value="Send" class="btn">Register</button>
+            </div>
+          </div>
+
+
         </form>
-
-      <hr>
-
-      <footer>
-        <p>&copy; ToKnow 2014</p>
-      </footer>
     </div> <!-- /container -->
 
 

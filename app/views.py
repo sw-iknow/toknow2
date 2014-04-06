@@ -35,7 +35,7 @@ def index(request):
             auth.login(request, user)
             current_user = user
 
-    template = loader.get_template('app/index.html')
+    template = loader.get_template('app/index2.html')
     context = RequestContext(request, {
         'current_user': str(current_user),
         "page": "home",

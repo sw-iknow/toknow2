@@ -98,7 +98,7 @@
       {% for item in user_skills %}
 
    <div style="clear:both;">
-           <img src="images/Flytying.jpg" style="float:left; margin:0 10px 10px 0;" />
+           <img src="{{ item.skill_type_id.url }}" style="float:left; margin:0 10px 10px 0;" />
            <p><strong>{{ item.skill_type_id.name }}</strong><br><em>{{ item.snippet }}</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
       </div>
 

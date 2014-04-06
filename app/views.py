@@ -40,11 +40,12 @@ def index(request):
     if knowledge:
 
         try:
-            s = SkillType.objects.get(name=knowledge)
+            skilltypes = SkillType.objects.filter(name__icontains=knowledge).all()
+            logger.debug("found: " + str(skilltypes))
         except Exception:
-            s = None        
-        if s:
-            instances = SkillInstance.objects.filter(skill_type_id=s).filter(instance_type="Offer").all().order_by('?')[:3]
+            skilltypes = None        
+        if skilltypes:
+            instances = SkillInstance.objects.filter(skill_type_id__in=skilltypes).filter(instance_type="Offer").all().order_by('?')[:3]
 
     template = loader.get_template('app/index2.html')
     context = RequestContext(request, {
@@ -122,7 +123,8 @@ def registration(request):
                 try:
                     s = SkillType.objects.get(name=skill1)
                 except Exception:
-                    s = None
+                    s = SkillType(level=1,name=skill1)
+                    s.save()
                 if s:
                     si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer",snippet=skill1info)
                     si.save()
@@ -131,7 +133,8 @@ def registration(request):
                 try:
                     s = SkillType.objects.get(name=skill2)
                 except Exception:
-                    s = None
+                    s = SkillType(level=1,name=skill2)
+                    s.save()
                 if s:
                     si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer",snippet=skill2info)
                     si.save()
@@ -140,7 +143,8 @@ def registration(request):
                 try:
                    s = SkillType.objects.get(name=skill3)
                 except Exception:
-                    s = None
+                    s = SkillType(level=1,name=skill3)
+                    s.save()
                 if s:
                     si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer",snippet=skill3info)
                     si.save()

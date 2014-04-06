@@ -63,10 +63,14 @@ def profile(request):
             current_user = user
 
     template = loader.get_template('app/profile.html')
+    ui = UserInfo.objects.get(authuser_id=current_user)
+    user_skills = SkillInstance.objects.filter(user_id=ui).all()
+
     context = RequestContext(request, {
         'current_user': str(current_user),
         "page": "profile",
         "username": current_user.username,
+        "user_skills": user_skills,
     })
     logger.debug("User: " + str(current_user))
     return HttpResponse(template.render(context))
@@ -96,7 +100,7 @@ def registration(request):
             except Exception:
                 return HttpResponse("This username is taken.")
             user = auth.authenticate(username=str(username), password=str(password))
-            ui = UserInfo(message="{}::{}::{}".format(skill1, skill2, skill3), authuser_id_id=user.id)
+            ui = UserInfo(message="{}::{}::{}".format(skill1, skill2, skill3), authuser_id_id=u.id)
             ui.save()
 
             if skill1:

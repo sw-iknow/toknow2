@@ -94,15 +94,18 @@
       <div class="row" style="margin-top:20px">
         <div class="col-md-4">
           <h4>Your Knowledge Offers</h4>
-      <div>
-        <img src="images/Sourdough.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Sourdough Bread</strong><br><em>I am the Master!</em><br><strong>Views:</strong> 5; <strong>Requests:</strong> 0; <strong>Hookups:</strong> 0;</p>
+
+      {% for item in user_skills %}
+
+   <div style="clear:both;">
+           <img src="images/Flytying.jpg" style="float:left; margin:0 10px 10px 0;" />
+           <p><strong>{{ item.skill_type_id.name }}</strong><br><em>{{ item.snippet }}</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
       </div>
-      <div style="clear:both;">
-      <img src="images/Flytying.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Fly Tying</strong><br><em>I can get you started</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
-    </div>
-      <div style="clear:both;">
-      <img src="images/Bagpipes.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>History of Bagpipes</strong><br><em>My PhD subject</em><br>Views: 0; Requests: 0; Hookups: 0;</p>
-    </div>
+
+{% endfor %}
+
+
+
     <div style="clear:both;"></div>
         </div>
         <div class="col-md-4">

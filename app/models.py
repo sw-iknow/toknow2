@@ -7,7 +7,7 @@ class UserInfo(models.Model):
 
 class SkillType(models.Model):
 	level = models.IntegerField()
-	parent_id = models.ForeignKey("self")
+	parent_id = models.ForeignKey("self", null=True)
 	name = models.CharField(max_length=200)
 
 class SkillInstance(models.Model):

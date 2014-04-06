@@ -5,8 +5,9 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext, loader
 from django.contrib import auth
-from app.models import UserInfo
+from app.models import UserInfo,SkillType,SkillInstance
 from django.contrib.auth.models import User
+
 
 logger = logging.getLogger(__name__)
 fh = logging.FileHandler('debug.log')
@@ -94,6 +95,35 @@ def registration(request):
             user = auth.authenticate(username=str(username), password=str(password))
             ui = UserInfo(message="{}::{}::{}".format(skill1, skill2, skill3), authuser_id_id=user.id)
             ui.save()
+
+            if skill1:
+                try:
+                    s = SkillType.objects.get(name=skill1)
+                except Exception:
+                    s = None
+                if s:
+                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer")
+                    si.save()
+
+            if skill2:
+                try:
+                    s = SkillType.objects.get(name=skill2)
+                except Exception:
+                    s = None
+                if s:
+                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer")
+                    si.save()
+
+            if skill3:
+                try:
+                   s = SkillType.objects.get(name=skill3)
+                except Exception:
+                    s = None
+                if s:
+                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer")
+                    si.save()
+
+            
             auth.login(request, user)
             return redirect("/")
 

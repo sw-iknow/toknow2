@@ -7,8 +7,9 @@ class UserInfo(models.Model):
 
 class SkillType(models.Model):
 	level = models.IntegerField()
-	parent_id = models.ForeignKey("self")
+	parent_id = models.ForeignKey("self", null=True)
 	name = models.CharField(max_length=200)
+	url = models.CharField(max_length=200)
 
 class SkillInstance(models.Model):
 	user_id = models.ForeignKey(UserInfo)
@@ -21,3 +22,4 @@ class Hookup(models.Model):
 	offerer_id = models.ForeignKey(UserInfo, related_name='offerer_hookups')
 	rating = models.IntegerField()
 	date = models.DateField()
+

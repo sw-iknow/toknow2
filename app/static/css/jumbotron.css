@@ -1,0 +1,31 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.jumbotron {
+	background-image:url('../images/Clouds.jpg');
+	text-align:center;
+}
+.jumbotron h1 {
+	color:white;
+}
+.col-header {
+	width:100%;
+	text-align:center;
+	padding:5px 0;
+	border-radius: 10px;
+	font-size:1.3em;
+}
+.knowledge-offer {
+	background-color:#00578B;
+	color:#6ABBEB;
+}
+.knowledge-request {
+	background-color:#6ABBEB;
+	color:#00578B;
+}
+.btn-notregistered {
+	width:200px;
+	background-color:#FF8C00;
+}

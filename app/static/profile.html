@@ -35,33 +35,27 @@
     {% if current_user == "AnonymousUser" %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
+      <div class="container"><center>
         <h3>You must register to have access to the profile page</h3>
         <p><a class="btn btn-primary btn-lg" role="button" href="registration">Register</a></p>
+        </center>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>What we do</h2>
-          <p>The world's first knowledge exchange and mentoring platform, 
-          allowing users to share knowledge and connect 
-          to experts in real time</p>
-        </div>
-        <div class="col-md-4">
-          <h2>Got a question?</h2>
-          <p>Then you've come to the right place.  Find experts in every field
-          who can answer your question right now</p>
-       </div>
-        <div class="col-md-4">
-          <h2>Or are you an expert?</h2>
-          <p>Then share your knowledge and find other people to connect with
-          and help end 'knowledge poverty'</p>
-        </div>
-      </div>
+        <div class="col-md-12">
 
+        </div>
+
+      </div>
+<hr>
+
+      <footer>
+        <p>&copy; ToKnow 2014</p>
+      </footer>
+    </div> <!-- /container -->
       {% else %}
 
    <div class="container">
@@ -72,18 +66,25 @@
           <h4>The world's first knowledge exchange and mentoring platform, allowing users to share knowledge and connect to experts in real time!</h4>
         </div>
         <div class="col-md-4">
-    <img src="images/DannyBluestone.jpg" style="float:right" />
-        <p><strong>Danny Bluestone</strong> <a href="">log out</a></p>
+    <img src="images/DannyBluestone.jpg" style="float:right" class="img-circle" />
+        <h3>{{ username }}</h3>
           <p><strong>Statistics so far ...</strong><br>Member since: 4th April 2014<br>Knowledge offers: 3<br>Knowledge requests: 95<br>Knowledge hook-ups: 17</p>
-          <p><a class="btn" href="#">Edit Profile &raquo;</a></p>
+          <p><button type="button" class="btn btn-default btn-sm">Edit Profile</button></p>
        </div>
         <div class="col-md-4">
-            <form>
+            <form role="form">
           <p><strong>Knowledge finder</strong></p>
       <p>Start by typing the knowledge you are offering or requesting in the search box below</p>
-              <input class="span4" type="text" placeholder="search">
+        
               
-            </form>
+ 
+  <div class="form-group">
+    <input type="text" class="form-control" name="skill_search" placeholder="Search" style="width: 70%">
+  </div>
+
+ 
+  <button type="submit" class="btn btn-default btn-sm">Submit</button>
+</form>
         </div>
       </div>
 
@@ -93,15 +94,18 @@
       <div class="row" style="margin-top:20px">
         <div class="col-md-4">
           <h4>Your Knowledge Offers</h4>
-      <div>
-        <img src="images/Sourdough.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Sourdough Bread</strong><br><em>I am the Master!</em><br><strong>Views:</strong> 5; <strong>Requests:</strong> 0; <strong>Hookups:</strong> 0;</p>
+
+      {% for item in user_skills %}
+
+   <div style="clear:both;">
+           <img src="{{ item.skill_type_id.url }}" style="float:left; margin:0 10px 10px 0;" />
+           <p><strong>{{ item.skill_type_id.name }}</strong><br><em>{{ item.snippet }}</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
       </div>
-      <div style="clear:both;">
-      <img src="images/Flytying.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>Fly Tying</strong><br><em>I can get you started</em><br>Views: 1; Requests: 0; Hookups: 0;</p>
-    </div>
-      <div style="clear:both;">
-      <img src="images/Bagpipes.jpg" style="float:left; margin:0 10px 10px 0;" /> <p><strong>History of Bagpipes</strong><br><em>My PhD subject</em><br>Views: 0; Requests: 0; Hookups: 0;</p>
-    </div>
+
+{% endfor %}
+
+
+
     <div style="clear:both;"></div>
         </div>
         <div class="col-md-4">
@@ -132,12 +136,7 @@
 
       {% endif %}
 
-      <hr>
-
-      <footer>
-        <p>&copy; ToKnow 2014</p>
-      </footer>
-    </div> <!-- /container -->
+      
 
 
     <!-- Bootstrap core JavaScript

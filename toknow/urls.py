@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', include('app.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^registration$', views.registration),
+    url(r'^profile$', views.profile),
 )
 
 from django.conf.urls.static import static

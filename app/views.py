@@ -35,9 +35,31 @@ def index(request):
             current_user = user
 
     template = loader.get_template('app/index.html')
-    context = RequestContext(request, {'current_user': str(current_user)})
+    context = RequestContext(request, {
+        'current_user': str(current_user),
+        "page": "home",
+    })
     logger.debug("User: " + str(current_user))
     return HttpResponse(template.render(context))
+
+
+def profile(request):
+    logout = request.POST.get('action', '')
+    current_user = request.user
+
+    if logout:
+        logger.debug("Logging out!")
+        auth.logout(request)
+        return redirect("/")
+
+    template = loader.get_template('app/profile.html')
+    context = RequestContext(request, {
+        'current_user': str(current_user),
+        "page": "profile",
+    })
+    logger.debug("User: " + str(current_user))
+    return HttpResponse(template.render(context))
+
 
 def registration(request):
     logger.debug("REGISTRATION")

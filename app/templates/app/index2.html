@@ -98,7 +98,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th>User name</th>
+          <th style="width:10%"></th>
+          <th style="width:30%">User name</th>
           <th>Skill</th>
           <th>Snippet</th>
         </tr>
@@ -106,6 +107,7 @@
       <tbody>
       {% for item in instances %}
         <tr>
+          <td><img class="img-circle"  style="max-width: 40px;" src="{{ item.skill_type_id.url }}"></td>
           <td>{{ item.user_id.authuser_id.username }}</td>
           <td>{{ item.skill_type_id.name }}</td>
           <td>{{ item.snippet }}</td>

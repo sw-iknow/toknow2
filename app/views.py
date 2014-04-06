@@ -83,6 +83,9 @@ def registration(request):
         skill1 = request.POST.get('skill1', '')
         skill2 = request.POST.get('skill2', '')
         skill3 = request.POST.get('skill3', '')
+        skill1info = request.POST.get('skill1info', '')
+        skill2info = request.POST.get('skill2info', '')
+        skill3info = request.POST.get('skill3info', '')
         logger.debug("reg user:" + email)
         logger.debug("reg pw:" + password)
         if email:
@@ -102,7 +105,7 @@ def registration(request):
                 except Exception:
                     s = None
                 if s:
-                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer")
+                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer",snippet=skill1info)
                     si.save()
 
             if skill2:
@@ -111,7 +114,7 @@ def registration(request):
                 except Exception:
                     s = None
                 if s:
-                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer")
+                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer",snippet=skill2info)
                     si.save()
 
             if skill3:
@@ -120,7 +123,7 @@ def registration(request):
                 except Exception:
                     s = None
                 if s:
-                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer")
+                    si = SkillInstance(user_id=ui, skill_type_id=s, instance_type="Offer",snippet=skill3info)
                     si.save()
 
             

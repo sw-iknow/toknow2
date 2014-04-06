@@ -44,6 +44,8 @@ def index(request):
 
 
 def profile(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
     logout = request.POST.get('action', '')
     current_user = request.user
 
@@ -51,6 +53,13 @@ def profile(request):
         logger.debug("Logging out!")
         auth.logout(request)
         return redirect("/")
+    else:
+        user = auth.authenticate(username=str(username), password=str(password))
+        logger.debug("authed user:" + str(user))
+        logger.debug("Username: " + username + ", Password: " + password)
+        if user is not None and user.is_active:
+            auth.login(request, user)
+            current_user = user
 
     template = loader.get_template('app/profile.html')
     context = RequestContext(request, {
@@ -82,7 +91,10 @@ def registration(request):
             return redirect("/")
 
         template = loader.get_template('app/registration.html')
-        context = RequestContext(request, {'current_user': str(request.user)})
+        context = RequestContext(request, {
+            'current_user': str(request.user),
+            "page": "registration",
+        })
         logger.debug("Data: " + str(email) + " " + str(password) + " " + str(message))
 
         return HttpResponse(template.render(context))

@@ -35,33 +35,27 @@
     {% if current_user == "AnonymousUser" %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
+      <div class="container"><center>
         <h3>You must register to have access to the profile page</h3>
         <p><a class="btn btn-primary btn-lg" role="button" href="registration">Register</a></p>
+        </center>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>What we do</h2>
-          <p>The world's first knowledge exchange and mentoring platform, 
-          allowing users to share knowledge and connect 
-          to experts in real time</p>
-        </div>
-        <div class="col-md-4">
-          <h2>Got a question?</h2>
-          <p>Then you've come to the right place.  Find experts in every field
-          who can answer your question right now</p>
-       </div>
-        <div class="col-md-4">
-          <h2>Or are you an expert?</h2>
-          <p>Then share your knowledge and find other people to connect with
-          and help end 'knowledge poverty'</p>
-        </div>
-      </div>
+        <div class="col-md-12">
 
+        </div>
+
+      </div>
+<hr>
+
+      <footer>
+        <p>&copy; ToKnow 2014</p>
+      </footer>
+    </div> <!-- /container -->
       {% else %}
 
    <div class="container">
@@ -132,12 +126,7 @@
 
       {% endif %}
 
-      <hr>
-
-      <footer>
-        <p>&copy; ToKnow 2014</p>
-      </footer>
-    </div> <!-- /container -->
+      
 
 
     <!-- Bootstrap core JavaScript

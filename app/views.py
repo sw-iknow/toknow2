@@ -22,6 +22,8 @@ def index(request):
     password = request.POST.get('password', '')
     logout = request.POST.get('action', '')
     current_user = request.user
+    knowledge = request.POST.get('knowledge', '')
+    instances = []
 
     if logout:
         logger.debug("Logging out!")
@@ -35,10 +37,20 @@ def index(request):
             auth.login(request, user)
             current_user = user
 
+    if knowledge:
+
+        try:
+            s = SkillType.objects.get(name=knowledge)
+        except Exception:
+            s = None        
+        if s:
+            instances = SkillInstance.objects.filter(skill_type_id=s).filter(instance_type="Offer").all().order_by('?')[:3]
+
     template = loader.get_template('app/index2.html')
     context = RequestContext(request, {
         'current_user': str(current_user),
         "page": "home",
+        "instances": instances
     })
     logger.debug("User: " + str(current_user))
     return HttpResponse(template.render(context))
@@ -63,7 +75,10 @@ def profile(request):
             current_user = user
 
     template = loader.get_template('app/profile.html')
-    ui = UserInfo.objects.get(authuser_id=current_user)
+    try:
+        ui = UserInfo.objects.get(authuser_id=current_user)
+    except Exception:
+        return redirect("/")
     user_skills = SkillInstance.objects.filter(user_id=ui).all()
 
     context = RequestContext(request, {

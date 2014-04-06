@@ -43,14 +43,14 @@
         </div>
             <div class="col-md-4"  style="height:65px">
 
-<form class="form-inline" role="form">
+
+<form class="form-inline" role="form" action="" method="post">{% csrf_token %}
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail2">Skills</label>
-    <input type="email" class="form-control input-lg" id="exampleInputEmail2" placeholder="Search for knowledge">
+    <input type="text" name="knowledge" class="form-control input-lg" placeholder="Search for knowledge">
   </div>
-  <button type="submit" class="btn btn-default btn-lg">GO</button>
+  <button type="submit" name="submit" class="btn btn-default btn-lg">GO</button>
 </form>
-
 
 
           </div>
@@ -61,6 +61,10 @@
 
     <div class="container">
       <!-- Example row of columns -->
+
+
+       {% if current_user == "AnonymousUser" %}
+
       <div class="row">
         <div class="col-md-4">
           <div class="col-header knowledge-offer">Knowledge offer</div>
@@ -84,8 +88,36 @@
             <p>I'm Italian! I don't belong in the desert! But I want to go to Burning Man. Can you help me?</p>
           <p><a class="btn btn-default btn-notregistered" href="#" role="button">Hookup with Giovanni &raquo;<br><span style="font-size:0.8em">Need to register first</span></a></p>
        </div>
-      </div>
+      </div> <!-- end row -->
+{% else %}
+<div class="row">
 
+
+
+<div class="bs-example">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User name</th>
+          <th>Skill</th>
+          <th>Snippet</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in instances %}
+        <tr>
+          <td>{{ item.user_id.authuser_id.username }}</td>
+          <td>{{ item.skill_type_id.name }}</td>
+          <td>{{ item.snippet }}</td>
+        </tr>
+{% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endif %}
       <hr>
 
       <footer>

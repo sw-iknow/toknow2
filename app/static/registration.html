@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>ToKnow</title>
 
@@ -32,43 +29,63 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
-    <div class="container" style="margin: 10px;">
-      <div class="row"><h2>New Registration</h2></div>
-      <!-- Example row of columns -->
-        <form role="form" action="" method="post">{% csrf_token %}
-          <fieldset>
-           <div class="form-group">
-             <label class="col-md-2" for="inputEmail">Email</label>
-             <div class="col-md-10">
-              <input type="text" class = "form-control" name="email" placeholder="Email">
+    <div class="container" style="margin: 10px 0px 0px 50px;max-width:500px">
+
+
+      <div style="padding-bottom:10px"><p><h3>New Registration</h3></p></div>
+            <div class="bs-example">
+            <form class="form-horizontal" role="form" action="" method="post">{% csrf_token %}
+              <div class="form-group">
+                <label for="inputUsername3" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputUsername3" name="username" placeholder="Username">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputEmail" name="email" placeholder="Email">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+                </div>
+              </div>
+ 
+
+              <div class="form-group">
+                <label for="inputSkill1" class="col-sm-2 control-label">Skill 1</label>
+                <div class="col-sm-10">
+                  <input type="text" name="skill1" class="form-control" id="inputSkill1" placeholder="...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputSkill2" class="col-sm-2 control-label">Skill 2</label>
+                <div class="col-sm-10">
+                  <input type="text" name="skill2" class="form-control" id="inputSkill2" placeholder="...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputSkill3" class="col-sm-2 control-label">Skill 3</label>
+                <div class="col-sm-10">
+                  <input type="text" name="skill3" class="form-control" id="inputSkill3" placeholder="...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" name="submit" value="Send" class="btn btn-default">Sign up</button>
+                </div>
+              </div>
+            </form>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="inputPassword">Password</label>
-            <div class="controls">
-              <input type="password" name="password" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-        <div class ="control-group">
-          
-          <label class="control-label">Enter your skills here</label>
-            <div class = "controls">
-              <textarea name="message" rows="3"></textarea>
-            </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-          <button type="submit" name="submit" value="Send" class="btn">Submit</button>
-        
-        </div>
-        </div></fieldset>
-        </form>
 
-      <hr>
-
-      <footer>
-        <p>&copy; ToKnow 2014</p>
-      </footer>
     </div> <!-- /container -->
 
 

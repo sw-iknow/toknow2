@@ -75,17 +75,23 @@ def registration(request):
     if request.user.is_active:
         return HttpResponse("Already registered")
     else:
+        username = request.POST.get('username', '')
         email = request.POST.get('email', '')
         password = request.POST.get('password', '')
-        message = request.POST.get('message', '')
+        skill1 = request.POST.get('skill1', '')
+        skill2 = request.POST.get('skill2', '')
+        skill3 = request.POST.get('skill3', '')
         logger.debug("reg user:" + email)
         logger.debug("reg pw:" + password)
         if email:
-            u = User.objects.create_user(username=str(email), password=str(password))
-            u.set_password(password)
-            u.save()
-            user = auth.authenticate(username=str(email), password=str(password))
-            ui = UserInfo(message=message, authuser_id_id=user.id)
+            try:
+                u = User.objects.create_user(username=str(username), email=email, password=str(password))
+                u.set_password(password)
+                u.save()
+            except Exception:
+                return HttpResponse("This username is taken.")
+            user = auth.authenticate(username=str(username), password=str(password))
+            ui = UserInfo(message="{}::{}::{}".format(skill1, skill2, skill3), authuser_id_id=user.id)
             ui.save()
             auth.login(request, user)
             return redirect("/")
@@ -95,6 +101,6 @@ def registration(request):
             'current_user': str(request.user),
             "page": "registration",
         })
-        logger.debug("Data: " + str(email) + " " + str(password) + " " + str(message))
+        logger.debug("Data: " + str(email) + " " + str(password) + " " + str(skill1))
 
         return HttpResponse(template.render(context))
